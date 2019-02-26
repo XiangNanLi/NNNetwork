@@ -1,0 +1,6 @@
+framework module NNNetwork {
+  umbrella header "NNNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}

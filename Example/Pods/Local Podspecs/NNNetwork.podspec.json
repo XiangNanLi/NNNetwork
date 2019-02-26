@@ -1,0 +1,27 @@
+{
+  "name": "NNNetwork",
+  "version": "0.1.0",
+  "summary": "A short description of NNNetwork.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Nan/NNNetwork",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Nan": "lixiangnan@guxiansheng.cn"
+  },
+  "source": {
+    "git": "https://github.com/Nan/NNNetwork.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "NNNetwork/Classes/**/*",
+  "dependencies": {
+    "AFNetworking": [
+
+    ]
+  }
+}

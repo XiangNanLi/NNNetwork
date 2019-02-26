@@ -1,0 +1,6 @@
+framework module Pods_NNNetwork_Tests {
+  umbrella header "Pods-NNNetwork_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
