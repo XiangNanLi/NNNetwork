@@ -71,9 +71,15 @@ typedef NS_ENUM(NSUInteger, NNRequestMethod) {
  */
 - (void)removeHTTPHeaderField:(NSString *)field ;
 
+- (NSURLSessionDataTask *)dataTaskWithMethod:(NNRequestMethod)method requestURL:(NSString *)requestURL params:(NSDictionary *)params successHandler:(void (^)(id responseObject))successHandler failureHandler:(void (^)(NSInteger statusCode, NSString *message))failureHandler ;
+
+@end
+
+@interface NNSessionManager (Deprecated)
+
 /**
  设置HTTPRequestParam
-
+ 
  @param value 值
  @param field HTTPRequestParam
  */
@@ -81,11 +87,9 @@ typedef NS_ENUM(NSUInteger, NNRequestMethod) {
 
 /**
  移除HTTPRequestParam
-
+ 
  @param field HTTPRequestParam
  */
 - (void)removeHTTPRequestParamField:(NSString *)field ;
-
-- (NSURLSessionDataTask *)dataTaskWithMethod:(NNRequestMethod)method requestURL:(NSString *)requestURL params:(NSDictionary *)params successHandler:(void (^)(id responseObject))successHandler failureHandler:(void (^)(NSInteger statusCode, NSString *message))failureHandler ;
 
 @end

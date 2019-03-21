@@ -60,7 +60,7 @@ NSString *NNRequestMethodString(NNRequestMethod requestMethod) {
 @interface NNSessionManager ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
-@property (nonatomic, strong) NSMutableDictionary *HTTPRequestParams; //!< 请求的公共参数
+@property (nonatomic, strong) NSMutableDictionary *HTTPRequestParams DEPRECATED_ATTRIBUTE; //!< 请求的公共参数
 
 @end
 
@@ -96,10 +96,13 @@ NSString *NNRequestMethodString(NNRequestMethod requestMethod) {
     
     // 请求参数
     NSMutableDictionary *newParams = [NSMutableDictionary dictionaryWithDictionary:(params ? params : @{})];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
     // 加装全局参数
     if (self.HTTPRequestParams) {
         [newParams addEntriesFromDictionary:self.HTTPRequestParams];
     }
+#pragma clang diagnostic pop
     // 由外部指定参数加密或签名
     if (self.makeSignBlock) {
         newParams = [self.makeSignBlock(requestMethod, requestURL, newParams) mutableCopy];
@@ -182,19 +185,29 @@ NSString *NNRequestMethodString(NNRequestMethod requestMethod) {
     [self.sessionManager.requestSerializer setValue:nil forHTTPHeaderField:field];
 }
 
+@end
+
+@implementation NNSessionManager (Deprecated)
+
 #pragma mark 设置HTTPRequestParam
 - (void)setValue:(id)value forHTTPRequestParamField:(NSString *)field {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
     if (!self.HTTPRequestParams) {
         self.HTTPRequestParams = [NSMutableDictionary dictionary];
     }
     if (value) {
         [self.HTTPRequestParams setObject:value forKey:field];
     }
+#pragma clang diagnostic pop
 }
 
 #pragma mark 移除HTTPRequestParam
 - (void)removeHTTPRequestParamField:(NSString *)field {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
     [self.HTTPRequestParams removeObjectForKey:field];
+#pragma clang diagnostic pop
 }
 
 @end
